@@ -43,6 +43,13 @@ describe('AppComponent', () => {
     expect(component).toBeTruthy();
   }));
 
+  it('TodosService injected via inject(...) and TestBed.get(...) should be the same instance',
+    inject([TodosService], (injectService: TodosService) => {
+      let testBedService = TestBed.get(TodosService);
+      expect(injectService).toBe(testBedService);
+    })
+  );
+
   it('should ensure the isUpdating is false after cancelUpdating function', () => {
     expect(component.isUpdating).toEqual(false);
     component.isUpdating = true;
