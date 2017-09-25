@@ -4,25 +4,32 @@ import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
 import {AppRoutingModule} from './app-routing.module';
 import { TodosComponent } from './todos/todos.component';
 import {LoginService} from "./login/login.service";
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {TodosService} from "./todos/todos.service";
+import {MakeDraggable} from "./shared/make-draggable.directive";
+import {MakeDroppable} from "./shared/make-droppable.directive";
+import {TodoComponent} from "./todo/todo.component";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent,
-    TodosComponent
+    TodosComponent,
+    MakeDraggable,
+    MakeDroppable,
+    TodoComponent
   ],
   imports: [
-    FormsModule,
     BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
     HttpModule,
     AppRoutingModule
+
   ],
   providers: [
     LoginService,

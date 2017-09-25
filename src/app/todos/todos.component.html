@@ -1,28 +1,22 @@
 
 
-<nav class="navbar navbar-dark bg-dark m-3">
-  <h1 class="display-1 text-light"><strong>CrossOver Todos</strong></h1>
-    <button class="btn btn-outline-success my-2 my-sm-0" (click)="logout()">Logout</button>
+<nav class="navbar navbar-dark bg-light m-3">
+  <h1 class="display-3 text-dark"><strong>CrossOver Todos</strong></h1>
+    <button class="btn btn-success my-2 my-sm-0" (click)="logout()">Logout</button>
 </nav>
 
-<div class="container ">
-  <div class="row">
-    <div class="col">
+<div class="container" >
+  <div class="row mb-4" >
+    <div class="col"  >
 
-      <div class="card border border-dark">
-        <h1 class="card-header bg-warning"> <strong class="text-light">IN PROGRESS</strong></h1>
+      <div class="card border border-dark"   >
+        <h3 class="card-header bg-warning"> <strong class="text-light">IN PROGRESS</strong></h3>
 
-        <div *ngFor="let inProgressTodo of todosInProgress">
-          <div class="card m-1">
-            <div class="card-body">
-              <h4 class="card-title">{{inProgressTodo.title}}</h4>
-              <p class="card-text">{{inProgressTodo.description}}</p>
-              <h6 class="align-text-bottom text-right">{{inProgressTodo.author?.username}}</h6>
-            </div>
-          </div>
-        </div>
+        <todo  *ngFor="let inProgressTodo of todosInProgress" [todo]="inProgressTodo"  (deleteItem)="deleteItem(inProgressTodo._id)"  [makeDraggable]="inProgressTodo" makeDroppable (dropped)="onDrop($event, inProgressTodo)">
 
-        <a (click)="showNewItem()" class="text-center">(Add New Item)</a>
+        </todo>
+
+        <a (click)="showNewItem()" class="text-center">( Add New Item )</a>
 
         <div class="card m-1" *ngIf="isAdding">
           <div class="card-body">
@@ -50,18 +44,13 @@
 
     </div>
 
-    <div class="col">
-      <div class="card border border-dark">
-        <h1 class="card-header bg-success"> <strong class="text-light">Completed</strong></h1>
-        <div *ngFor="let todoCompleted of todosCompleted">
-          <div class="card m-1">
-            <div class="card-body">
-              <h4 class="card-title">{{todoCompleted.title}}</h4>
-              <p class="card-text">{{todoCompleted.description}}</p>
-              <h6 class="align-text-bottom text-right">{{todoCompleted.author?.username}}</h6>
-            </div>
-          </div>
-        </div>
+    <div class="col"  >
+      <div class="card border border-dark"  >
+        <h3 class="card-header bg-success"> <strong class="text-light">Completed</strong></h3>
+
+        <todo *ngFor="let todoCompleted of todosCompleted" [todo]="todoCompleted" (deleteItem)="deleteItem(todoCompleted._id)"  [makeDraggable]="todoCompleted" makeDroppable (dropped)="onDrop($event, todoCompleted)">
+
+        </todo>
 
 
       </div>

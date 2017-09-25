@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  private user: User = new User();
+  public user: User = new User();
   private subscription: Subscription;
 
 

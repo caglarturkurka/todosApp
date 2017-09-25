@@ -1,18 +1,42 @@
-<div class="col-md-6 col-md-offset-3">
-  <h2>Login</h2>
-  <form name="form" (ngSubmit)="login()" #f="ngForm" novalidate>
-    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-      <label for="username">Username</label>
-      <input type="text" id="username" class="form-control" name="username" [(ngModel)]="user.username" #username="ngModel" required />
-      <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="text-center text-white mb-4">Login Form</h2>
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <span class="anchor"></span>
+
+          <!-- form card login -->
+          <div class="card rounded-0">
+            <div class="card-header">
+              <h3 class="mb-0">Login</h3>
+            </div>
+            <div class="card-body">
+              <form class="form" autocomplete="off" name="form" (ngSubmit)="login()" #f="ngForm" novalidate>
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" class="form-control form-control-lg rounded-0" name="username" id="username" [(ngModel)]="user.username" #username="ngModel" required >
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control form-control-lg rounded-0" id="password" name="password" [(ngModel)]="user.password" #password="ngModel" required>
+                </div>
+
+                <button class="btn btn-success btn-lg float-right">Login</button>
+              </form>
+            </div>
+            <!--/card-block-->
+          </div>
+          <!-- /form card login -->
+
+        </div>
+
+
+      </div>
+      <!--/row-->
+
     </div>
-    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-      <label for="password">Password</label>
-      <input type="password" id="password" class="form-control" name="password" [(ngModel)]="user.password" #password="ngModel" required />
-      <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
-    </div>
-    <div class="form-group">
-      <button  class="btn btn-primary">Login</button>
-    </div>
-  </form>
+    <!--/col-->
+  </div>
+  <!--/row-->
 </div>

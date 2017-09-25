@@ -1,0 +1,31 @@
+<div class="card m-1"   (dblclick)="updating()"  >
+  <div class="card-body" *ngIf="isUpdating===false"  >
+    <button type="button" class="close" aria-label="Delete" (click)="delete(todo._id)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+    <h4 class="card-title">{{todo?.title}}</h4>
+    <p  class="card-text">{{todo?.description}}</p>
+    <h6 class="align-text-bottom text-right">{{todo?.author?.username}}</h6>
+
+  </div>
+
+
+  <div class="card-body" *ngIf="isUpdating" >
+    <div class="card-title border border-dark">
+      <input type="text" class="form-control" [(ngModel)]="todo.title" id="title" name="title" placeholder="Title" />
+    </div>
+
+    <div class="card-text border border-dark" >
+      <input type="text" class="form-control" [(ngModel)]="todo.description" id="description" name="description" placeholder="Description" />
+    </div>
+
+    <div class="text-right">
+      <button type="button" (click)="cancelUpdating()"   class="btn btn-warning mt-1"  >Cancel</button>
+      <button type="button" (click)="updateItem(todo)"  class="btn btn-success mt-1"  >Update</button>
+    </div>
+
+  </div>
+</div>
+
+

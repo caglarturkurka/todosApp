@@ -14,11 +14,28 @@ export class LoginService {
   }
   logout():void {
     console.log('Logging out');
-    window.localStorage.removeItem("sessionId");
-    window.localStorage.removeItem("username");
-    window.localStorage.removeItem("isAuthenticated");
-    window.localStorage.clear();
-    this.router.navigate(['/login']);
+
+    let sessionId = window.localStorage.getItem("sessionId");
+    this.http.get(API_URL +"/user/logout?sessionId="+sessionId).subscribe(
+      (response) => {
+        if(response.json().status=="success"){
+          window.localStorage.removeItem("sessionId");
+          window.localStorage.removeItem("username");
+          window.localStorage.removeItem("isAuthenticated");
+          window.localStorage.clear();
+          this.router.navigate(['/login']);
+
+
+        }
+      },
+      (error) => {
+
+      },
+      () => {
+
+      }
+    )
+
   }
 
   login(user: User): Observable<any>{
